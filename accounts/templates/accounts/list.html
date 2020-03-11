@@ -1,3 +1,5 @@
+{% load accounts_tags %}
+
 <h1>User List</h1>
 <a href="{% url 'accounts:add' %}">Add User</a>
 <br>
@@ -7,6 +9,12 @@
     <div>
         <h4><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h4>
         <p>{{ user.get_full_name }}</p>
+        <p>Birthday: {{ user.birthday }}</p>
+        <p>Number: {{ user.number }}</p>
+        <p>Status: {% is_allowed user %}</p>
+        <p>BizzFuzz result: {% bizzfuzz user.number %}</p>
     </div>
+{% empty %}
+    <h2>No users yet</h2>
 {% endfor %}
 </div>

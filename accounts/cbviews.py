@@ -3,13 +3,7 @@ from django.urls import reverse_lazy, reverse
 from django.shortcuts import get_object_or_404
 from .models import User
 from .forms import UserForm
-# 3. Create views for: 
-# list of all users, 
-# viewing, 
-# adding, 
-# editing 
-# deleting a single user
-# TODO check template_name_suffix
+
 
 class UserList(views.ListView):
     model = User
