@@ -5,19 +5,30 @@
 {% block content %}
 <h1>User List</h1>
 <a id="report" href="{% url 'accounts:report' %}" >Download report</a>
-<div class="wrapper">
-{% for user in users %}
-    <div class="person">
-        <h3 class="username" ><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h3>
-        <p>{{ user.first_name }}</p>
-        <p>{{ user.last_name }}</p>
-        <p>Birthday: {{ user.birthday }}</p>
-        <p>Status: <strong class="status">{% is_allowed user %}</strong></p>
-        <p>Number: {{ user.number }}</p>
-        <p>BizzFuzz result: {% bizzfuzz user.number %}</p>
-    </div>
-{% empty %}
-    <h2>No users yet</h2>
-{% endfor %}
-</div>
+<table class="user-list">
+    <thead>
+        <td>Username</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Birthday</td>
+        <td>Status</td>
+        <td>Number</td>
+        <td>BizzFuzz</td>
+    </thead>
+    {% for user in users %}
+        <tr>
+            <td>
+                <h3 class="username" ><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h3>
+            </td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.birthday }}</td>
+            <td><strong class="status">{% is_allowed user %}</strong></td>
+            <td>{{ user.number }}</td>
+            <td>{% bizzfuzz user.number %}</td>  
+        </tr>
+    {% empty %}
+        <tr><td>No users.</td></tr>
+    {% endfor %}
+<table>
 {% endblock %}
