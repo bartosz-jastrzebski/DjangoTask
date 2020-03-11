@@ -5,8 +5,8 @@ from random import randint
 
 
 class User(AbstractUser):
-    birthday = models.DateField()
-    number = models.PositiveSmallIntegerField(editable=False, blank=False)
+    birthday = models.DateField(null=True)
+    number = models.PositiveSmallIntegerField(editable=False, blank=False, null=True)
 
     def get_absolute_url(self):
         return reverse('accounts:detail', kwargs={'username': self.username})
