@@ -1,0 +1,7 @@
+<form method="post">
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+    {% csrf_token %}
+</form>
+
+<a href="{% url 'accounts:edit' object.username %}">Go back</a>

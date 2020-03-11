@@ -1,5 +1,5 @@
 import django.views.generic as views
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import get_object_or_404
 from .models import User
 from .forms import UserForm
@@ -14,11 +14,14 @@ from .forms import UserForm
 class UserList(views.ListView):
     model = User
     template_name = 'accounts/list.html'
+    context_object_name = 'users'
     paginate_by = 10
+
 
 class UserDetail(views.DetailView):
     model = User
     template_name = 'accounts/detail.html'
+    context_object_name = 'user'
 
     def get_object(self):
         username = self.kwargs.get('username')
@@ -28,12 +31,22 @@ class UserDetail(views.DetailView):
 class AddUser(views.CreateView):
     model = User
     template_name = 'accounts/add_user.html'
-    form_class = UserForm 
+    # form_class = UserForm
+    fields = ['username', 'first_name', 'last_name',
+                  'email', 'birthday']
+    
 
 class EditUser(views.UpdateView):
     model = User
     template_name = 'accounts/edit_user.html'
-    form_class = UserForm
+    # form_class = UserForm
+    fields = ['username', 'first_name', 'last_name',
+                  'email', 'birthday']
+
+    def get_success_url(self):
+        username = self.object.username
+        return reverse('accounts:detail', kwargs={'username': username})
+
 
     def get_object(self):
         username = self.kwargs.get('username')
@@ -43,7 +56,7 @@ class EditUser(views.UpdateView):
 class DeleteUser(views.DeleteView):
     model = User
     template_name = 'accounts/delete_user.html'
-    success_url = reverse_lazy('list')
+    success_url = reverse_lazy('accounts:list')
 
     def get_object(self):
         username = self.kwargs.get('username')

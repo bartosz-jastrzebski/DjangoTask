@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.shortcuts import reverse
 from random import randint
 
 
 class User(AbstractUser):
     birthday = models.DateField()
-    number = models.PositiveSmallIntegerField(editable=False)
+    number = models.PositiveSmallIntegerField(editable=False, blank=False)
+
+    def get_absolute_url(self):
+        return reverse('accounts:detail', kwargs={'username': self.username})
 
     def save(self, *args, **kwargs):
         if not self.number:

@@ -1,0 +1,12 @@
+<h1>User List</h1>
+<a href="{% url 'accounts:add' %}">Add User</a>
+<br>
+<a href="{% url 'accounts:report' %}" >Download report</a>
+<div>
+{% for user in users %}
+    <div>
+        <h4><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h4>
+        <p>{{ user.get_full_name }}</p>
+    </div>
+{% endfor %}
+</div>
