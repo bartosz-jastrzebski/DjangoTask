@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Delete User{% endblock %}
+
+{% block content %}
 <form method="post">
     <p>Are you sure you want to delete "{{ object }}"?</p>
     <input type="submit" value="Confirm">
@@ -5,3 +9,4 @@
 </form>
 
 <a href="{% url 'accounts:edit' object.username %}">Go back</a>
+{% endblock %}

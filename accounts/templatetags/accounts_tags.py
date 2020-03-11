@@ -16,7 +16,7 @@ def is_allowed(user_obj: object) -> str:
 
 
 @register.simple_tag
-def bizzfuzz(user_num):
+def bizzfuzz(user_num: int) -> str:
     if user_num % 3 == 0 and user_num % 5 == 0:
         return 'BizzFuzz'
     elif user_num % 5 == 0:

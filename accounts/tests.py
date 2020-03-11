@@ -12,9 +12,7 @@ class TestUserModel(TestCase):
         initial_number = user1.number
         user1.birthday = '2005-05-06'
         user1.save()
-        
         self.assertEqual(initial_number, user1.number)
-
 
 
 class TestTemplateTags(TestCase):
@@ -44,10 +42,7 @@ class TestTemplateTags(TestCase):
 
         legal_date = test_date + timedelta(days=today.day-1)
         illegal_date = test_date + timedelta(days=today.day)
-        print('Today: '+ str(today))
-        print(test_date)
-        print(legal_date)
-        print(illegal_date)
+
         user3 = User.objects.create(birthday=legal_date, username='3')
         user4 = User.objects.create(birthday=illegal_date, username='4')
 

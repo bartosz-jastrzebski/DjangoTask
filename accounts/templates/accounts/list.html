@@ -1,20 +1,22 @@
+{% extends 'base.html' %}
 {% load accounts_tags %}
+{% block title %}User List{% endblock %}
 
+{% block content %}
 <h1>User List</h1>
-<a href="{% url 'accounts:add' %}">Add User</a>
-<br>
 <a href="{% url 'accounts:report' %}" >Download report</a>
-<div>
+<div class="wrapper">
 {% for user in users %}
-    <div>
-        <h4><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h4>
+    <div class="person">
+        <h3><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h3>
         <p>{{ user.get_full_name }}</p>
         <p>Birthday: {{ user.birthday }}</p>
         <p>Number: {{ user.number }}</p>
-        <p>Status: {% is_allowed user %}</p>
+        <p>Status: <strong class="status">{% is_allowed user %}</strong></p>
         <p>BizzFuzz result: {% bizzfuzz user.number %}</p>
     </div>
 {% empty %}
     <h2>No users yet</h2>
 {% endfor %}
 </div>
+{% endblock %}

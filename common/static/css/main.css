@@ -1,0 +1,49 @@
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:active {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+  min-height: 5vh;
+  border-bottom: 2px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar-item {
+  padding: 15px;
+  font-size: 20px;
+}
+
+.container {
+  margin: 0 30px 0 30px;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.person {
+  padding: 6px;
+  -ms-flex-preferred-size: 20vw;
+      flex-basis: 20vw;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from .templatetags.accounts_tags import is_allowed, bizzfuzz
 from .models import User
 import csv
 
@@ -13,9 +14,8 @@ def csv_report(request):
         writer.writerow([
             user.username, 
             user.birthday,
-            'eligile',
+            is_allowed(user),
             user.number,
-            'bizz fuzz'
+            bizzfuzz(user.number)
         ])
-
     return response
