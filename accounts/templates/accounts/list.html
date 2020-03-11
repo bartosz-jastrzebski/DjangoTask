@@ -4,15 +4,16 @@
 
 {% block content %}
 <h1>User List</h1>
-<a href="{% url 'accounts:report' %}" >Download report</a>
+<a id="report" href="{% url 'accounts:report' %}" >Download report</a>
 <div class="wrapper">
 {% for user in users %}
     <div class="person">
-        <h3><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h3>
-        <p>{{ user.get_full_name }}</p>
+        <h3 class="username" ><a href="{% url 'accounts:detail' user.username %}">{{ user.username }}</a></h3>
+        <p>{{ user.first_name }}</p>
+        <p>{{ user.last_name }}</p>
         <p>Birthday: {{ user.birthday }}</p>
-        <p>Number: {{ user.number }}</p>
         <p>Status: <strong class="status">{% is_allowed user %}</strong></p>
+        <p>Number: {{ user.number }}</p>
         <p>BizzFuzz result: {% bizzfuzz user.number %}</p>
     </div>
 {% empty %}

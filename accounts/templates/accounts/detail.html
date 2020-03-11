@@ -1,13 +1,45 @@
 {% extends 'base.html' %}
+{% load accounts_tags %}
 {% block title %}User Info{% endblock %}
 
 {% block content %}
 <h1>{{ user.username }}</h1>
-<h2>{{ user.first_name }}</h2>
-<h2>{{ user.last_name}}</h2>
-<h3>{{ user.email }}</h3>
-<h3>{{ user.birthday }}</h3>
-<h3>Number: {{ user.number }}</h3>
-<a href="{% url 'accounts:edit' user.username %}">Edytuj</a>
-<a href="{% url 'accounts:delete' user.username %}">Usuń konto</a>
+
+<table class="user-info">
+    <tr>
+        <td>First name</td>
+        <td><strong>{{ user.first_name }}</strong></td>
+    </tr>
+    <tr>
+        <td>Last name</td>
+        <td><strong>{{ user.last_name }}</strong></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><strong>{{ user.email }}</strong></td>
+    </tr>
+    <tr>
+        <td>Birthday</td>
+        <td><strong>{{ user.birthday }}</strong></td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td><strong class="status">{% is_allowed user %}</strong></td>
+    </tr>
+    <tr>
+        <td>Number</td>
+        <td><strong>{{ user.number }}</strong></td>
+    </tr>
+    <tr>
+        <td>BizzFuzz</td>
+        <td><strong>{% bizzfuzz user.number %}</strong></td>
+    </tr>
+</table>
+
+<a href="{% url 'accounts:edit' user.username %}">
+    <button id="edit">Edytuj</button>
+</a>
+<a href="{% url 'accounts:delete' user.username %}">
+    <button id="delete">Usuń</button>
+</a>
 {% endblock %}

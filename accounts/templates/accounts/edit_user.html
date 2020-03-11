@@ -4,8 +4,36 @@
 {% block content %}
 <h1>Edit user data:</h1>
 <form method="post">
-    {{ form.as_p }}
+    <table class="user-info">
+        <tr>
+            {{ form.username.errors}}
+            <td>{{ form.username.label }}</td>
+            <td><strong>{{ form.username }}</strong></td>
+        </tr>
+        <tr>
+            <td>{{ form.first_name.label}}</td>
+            <td>{{ form.first_name }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.last_name.label }}</td>
+            <td>{{ form.last_name }}</td>
+        </tr>
+        <tr>
+            {{ form.email.errors}}
+            <td>Email</td>
+            <td>{{ form.email }}</td>
+        </tr>
+        <tr>
+            {{ form.birthday.errors}}
+            <td>{{ form.birthday.label}}</td>
+            <td>{{ form.birthday }}</td>
+        </tr>
+    </table>
     {% csrf_token %}
-    <input type="submit" value='Save'>
+    <a href="{% url 'accounts:detail' object.username %}">
+        <button type="button" id="edit" class="post-form">Go back</button>
+    </a>
+    <button id="save" type="submit">Save</button>
 </form>
+
 {% endblock %}

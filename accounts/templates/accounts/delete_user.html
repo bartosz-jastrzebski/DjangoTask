@@ -2,11 +2,13 @@
 {% block title %}Delete User{% endblock %}
 
 {% block content %}
+<h1>Are you sure you want to delete "{{ object }}"?</h1>
 <form method="post">
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm">
+   
+    <a href="{% url 'accounts:detail' object.username %}">
+        <button type="button" id="edit" class="post-form">Go back</button>
+    </a>
+    <button type="submit" id="delete">Confirm</button>
     {% csrf_token %}
 </form>
-
-<a href="{% url 'accounts:edit' object.username %}">Go back</a>
 {% endblock %}
