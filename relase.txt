@@ -1,0 +1,25 @@
+
+10 Added pagination
+9  Added date picker to birthday field
+8  Added view generating report
+7  Added templatetags and some tests
+    -templatetag to check user age 
+    -templatetag for fizzbuzz check
+    
+6  Added templates for views
+5  Added form:
+    -changed user birthday field attr - autocomlete = off
+
+4  Added views:
+    -list view
+    -detail view
+    -edit view
+    -delete view
+    -create view
+
+3  Created User model:
+    -added birthday field
+    -added random number field
+
+2  Added accounts app
+1  Created project
