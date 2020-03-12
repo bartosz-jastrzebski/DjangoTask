@@ -9,7 +9,7 @@ class UserList(views.ListView):
     queryset = User.objects.order_by('date_joined')
     template_name = 'accounts/list.html'
     context_object_name = 'users'
-    paginate_by = 4
+    paginate_by = 10
 
 
 class UserDetail(views.DetailView):
