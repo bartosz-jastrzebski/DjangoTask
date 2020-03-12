@@ -1,5 +1,4 @@
-from django.forms import ModelForm
-from django.contrib.admin.widgets import AdminDateWidget
+from django.forms import ModelForm, TextInput
 from .models import User
 
 class UserForm(ModelForm):
@@ -8,5 +7,5 @@ class UserForm(ModelForm):
         fields = ['username', 'first_name', 'last_name',
                   'email', 'birthday']
         widgets = {
-            'birthday': AdminDateWidget()
+            'birthday': TextInput(attrs={'autocomplete': 'off'})
         }

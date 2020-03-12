@@ -25,22 +25,17 @@ class UserDetail(views.DetailView):
 class AddUser(views.CreateView):
     model = User
     template_name = 'accounts/add_user.html'
-    # form_class = UserForm
-    fields = ['username', 'first_name', 'last_name',
-                  'email', 'birthday']
-    
+    form_class = UserForm
+
 
 class EditUser(views.UpdateView):
     model = User
     template_name = 'accounts/edit_user.html'
-    # form_class = UserForm
-    fields = ['username', 'first_name', 'last_name',
-                  'email', 'birthday']
+    form_class = UserForm
 
     def get_success_url(self):
         username = self.object.username
         return reverse('accounts:detail', kwargs={'username': username})
-
 
     def get_object(self):
         username = self.kwargs.get('username')

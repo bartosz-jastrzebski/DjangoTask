@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Add User{% endblock %}
 
 {% block content %}
@@ -32,4 +33,8 @@
     {% csrf_token %}
     <button type="submit" id="save">Add</button>
 </form>
+<link rel="stylesheet" href="{% static 'jquery-ui/jquery-ui.min.css' %}">
+<script src="{% static 'jquery-ui/external/jquery/jquery.js' %}"></script>
+<script src="{% static 'jquery-ui/jquery-ui.min.js' %}"></script>
+<script>$("#id_birthday").datepicker({changeYear: true, yearRange: "-150:+0"});</script>
 {% endblock %}
