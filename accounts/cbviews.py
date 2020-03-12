@@ -6,10 +6,10 @@ from .forms import UserForm
 
 
 class UserList(views.ListView):
-    model = User
+    queryset = User.objects.order_by('date_joined')
     template_name = 'accounts/list.html'
     context_object_name = 'users'
-    paginate_by = 10
+    paginate_by = 4
 
 
 class UserDetail(views.DetailView):
